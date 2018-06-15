@@ -7,7 +7,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.muntian.Main;
+import com.muntian.calculator.Activator;
 
 public class MainPanel extends Composite {
 
@@ -30,7 +30,7 @@ public class MainPanel extends Composite {
 	
 	public static MainPanel getInstance() {
 		if (instance == null)
-            instance = new MainPanel(Main.getShell());
+            instance = new MainPanel(Activator.getShell());
         return instance;
 	}
 	

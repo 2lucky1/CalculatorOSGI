@@ -15,10 +15,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
-import com.muntian.logic.Calculations;
-import com.muntian.logic.MathData;
-import com.muntian.logic.MathOperation;
-import com.muntian.logic.SimpleCalculatorImpl;
+import com.muntian.calculator.logic.Calculations;
+import com.muntian.calculator.logic.MathData;
+import com.muntian.calculator.mathservice.MathOperation;
+import com.muntian.calculator.mathservice.SimpleCalculatorImpl;
 
 public class MathOperationPanel extends Composite {
 
