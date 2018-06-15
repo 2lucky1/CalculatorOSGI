@@ -6,8 +6,8 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-
-import com.muntian.calculator.Activator;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 public class MainPanel extends Composite {
 
@@ -22,6 +22,16 @@ public class MainPanel extends Composite {
 	private HistoryPanel historyPanel;
 	
 	private static MainPanel instance;
+	
+	private static Display display;
+	private static Shell shell;
+	
+	private static final String TITLE_OF_APP = "SWT Calculator";
+
+	static {
+		display = new Display();
+		shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
+	}
 
 	private MainPanel(Composite parent) {
 		super(parent, SWT.BORDER);		
@@ -29,8 +39,14 @@ public class MainPanel extends Composite {
 	}
 	
 	public static MainPanel getInstance() {
+		shell.setText(TITLE_OF_APP);
+
+		GridLayout gridLayout = new GridLayout();
+		shell.setLayout(gridLayout);
+
 		if (instance == null)
-            instance = new MainPanel(Activator.getShell());
+            instance = new MainPanel(shell);
+
         return instance;
 	}
 	
@@ -64,4 +80,13 @@ public class MainPanel extends Composite {
 	public HistoryPanel getHistoryPanel() {
 		return historyPanel;
 	}
+	
+	public Shell getShell() {
+		return shell;
+	}
+	
+	public Display getDisplay() {
+		return display;
+	}
+	
 }

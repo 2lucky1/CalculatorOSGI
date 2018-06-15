@@ -6,7 +6,4 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: MUNTIAN
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.muntian.calculator.ui
-Require-Bundle: org.eclipse.swt;bundle-version="3.106.2"
-Import-Package: com.muntian.calculator,
- com.muntian.calculator.logic,
- com.muntian.calculator.mathservice
+Require-Bundle: org.eclipse.swt;bundle-version="3.105.1"

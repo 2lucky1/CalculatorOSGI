@@ -8,6 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: com.muntian.calculator.mathservice,
  com.muntian.calculator.ui,
  org.osgi.framework
-Require-Bundle: org.eclipse.swt
-Export-Package: com.muntian.calculator,
- com.muntian.calculator.logic
+Require-Bundle: org.eclipse.swt;bundle-version="3.105.1"
+Bundle-Activator: com.muntian.calculator.Activator

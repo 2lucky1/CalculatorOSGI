@@ -2,7 +2,7 @@ package com.muntian.calculator.logic;
 
 import java.util.Map;
 import com.muntian.calculator.mathservice.AbstractCalculator;
-import com.muntian.ui.MainPanel;
+import com.muntian.calculator.ui.MainPanel;
 
 public class Calculations implements Observer {
 
