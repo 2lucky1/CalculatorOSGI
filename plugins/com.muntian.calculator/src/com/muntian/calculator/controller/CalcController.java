@@ -1,11 +1,10 @@
 package com.muntian.calculator.controller;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 
 import com.muntian.calculator.listeners.ListenerForButtonCalculate;
 import com.muntian.calculator.listeners.ModifyListenerForFirstOperand;
+import com.muntian.calculator.listeners.ModifyListenerForOperator;
 import com.muntian.calculator.listeners.ModifyListenerForSecondOperand;
 import com.muntian.calculator.listeners.SelectionAdapterForCheckBox;
 import com.muntian.calculator.listeners.SelectionAdapterForMathOperator;
@@ -39,9 +38,13 @@ public class CalcController {
 	private void initActions() {		
 		mathOperationPanel.getFirstNumber().addModifyListener(new ModifyListenerForFirstOperand(mathData));
 		mathOperationPanel.getFirstNumber().addListener(SWT.Verify, new VerifyListenerForOperand());
+		
 		mathOperationPanel.getSecondNumber().addModifyListener(new ModifyListenerForSecondOperand(mathData));
 		mathOperationPanel.getSecondNumber().addListener(SWT.Verify, new VerifyListenerForOperand());
+		
 		mathOperationPanel.getMathOperator().addSelectionListener(new SelectionAdapterForMathOperator(mathData));
+		mathOperationPanel.getMathOperator().addModifyListener(new ModifyListenerForOperator(mathData));
+		
 		mathOperationPanel.getCheckBoxOnFlyMode().addSelectionListener(new SelectionAdapterForCheckBox(mathData));
 		mathOperationPanel.getBtnCalculate().addListener(SWT.Selection, new ListenerForButtonCalculate(mathData));
 	}
