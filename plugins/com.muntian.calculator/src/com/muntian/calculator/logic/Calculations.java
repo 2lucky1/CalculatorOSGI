@@ -26,9 +26,11 @@ public class Calculations implements Observer {
 		this.mathOperator = (String) params.get("sign");
 		this.secondNumber = (double) params.get("secondOperand");
 		
-		this.result = calculator.makeCalculation(firstNumber, secondNumber, mathOperator);
-		setResultIntoResultField(result);
-		setResultIntoHistory(result);
+		if(isOperatorExist(mathOperator)) {
+			this.result = calculator.makeCalculation(firstNumber, secondNumber, mathOperator);
+			setResultIntoResultField(result);
+			setResultIntoHistory(result);
+		}
 	}
 	
 	private void setResultIntoResultField(double result) {
@@ -39,6 +41,12 @@ public class Calculations implements Observer {
 		MainPanel.getInstance().getHistoryPanel()
 		.addStatementToHistory(firstNumber + mathOperator + secondNumber + " = " + result);
 	}
-	
+
+	private boolean isOperatorExist(String mathOperator) {
+		if(mathOperator.equals("")) {
+			return false;
+		}
+		return true;
+	}
 
 }

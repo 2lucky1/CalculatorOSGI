@@ -23,7 +23,11 @@ public class ModifyListenerForFirstOperand implements ModifyListener {
 		String operand = widget.getText();
 		if (mathOperationPanel.getCheckBoxOnFlyMode().getSelection()) {
 			System.out.println("Modify listener!!");
-			mathData.setFirstOperand(Double.parseDouble(operand));
+			if(operand.equals("")) {
+				mathData.setFirstOperand(0);
+			}else {
+				mathData.setFirstOperand(Double.parseDouble(operand));
+			}
 		}
 	}
 }
