@@ -19,7 +19,11 @@ public class SelectionAdapterForCheckBox extends SelectionAdapter {
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		if (mathOperationPanel.getCheckBoxOnFlyMode().getSelection()) {
-			mathData.setSign(mathOperationPanel.getMathOperator().getText());
+			mathData.setOnFlyMode(true);
+			mathOperationPanel.getBtnCalculate().setEnabled(false);
+		}else {
+			mathData.setOnFlyMode(false);
+			mathOperationPanel.getBtnCalculate().setEnabled(true);
 		}
 	}
 }

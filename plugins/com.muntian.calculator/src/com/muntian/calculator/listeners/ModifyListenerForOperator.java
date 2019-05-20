@@ -12,18 +12,21 @@ public class ModifyListenerForOperator implements ModifyListener {
 
 	private MathOperationPanel mathOperationPanel = MainPanel.getInstance().getMathOperationPanel();
 	private MathData mathData;
-	
+
 	public ModifyListenerForOperator(MathData mathData) {
 		this.mathData = mathData;
 	}
-	
+
 	@Override
 	public void modifyText(ModifyEvent e) {
 		Combo widget = (Combo) e.widget;
 		String operator = widget.getText();
-		if (mathOperationPanel.getCheckBoxOnFlyMode().getSelection()) {
-			System.out.println("Modify listener!!");
-			mathData.setSign(operator);
+
+		System.out.println("Modify listener!! operator");
+		mathData.setSign(operator);
+		
+		if(operator != "" && !mathData.isOnFlyMode()) {
+			mathOperationPanel.getBtnCalculate().setEnabled(true);
 		}
 
 	}

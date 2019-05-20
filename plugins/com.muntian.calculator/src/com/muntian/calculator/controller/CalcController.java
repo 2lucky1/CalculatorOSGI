@@ -7,7 +7,6 @@ import com.muntian.calculator.listeners.ModifyListenerForFirstOperand;
 import com.muntian.calculator.listeners.ModifyListenerForOperator;
 import com.muntian.calculator.listeners.ModifyListenerForSecondOperand;
 import com.muntian.calculator.listeners.SelectionAdapterForCheckBox;
-import com.muntian.calculator.listeners.SelectionAdapterForMathOperator;
 import com.muntian.calculator.listeners.VerifyListenerForOperand;
 import com.muntian.calculator.logic.Calculations;
 import com.muntian.calculator.logic.MathData;
@@ -42,11 +41,12 @@ public class CalcController {
 		mathOperationPanel.getSecondNumber().addModifyListener(new ModifyListenerForSecondOperand(mathData));
 		mathOperationPanel.getSecondNumber().addListener(SWT.Verify, new VerifyListenerForOperand());
 		
-		mathOperationPanel.getMathOperator().addSelectionListener(new SelectionAdapterForMathOperator(mathData));
 		mathOperationPanel.getMathOperator().addModifyListener(new ModifyListenerForOperator(mathData));
 		
 		mathOperationPanel.getCheckBoxOnFlyMode().addSelectionListener(new SelectionAdapterForCheckBox(mathData));
-		mathOperationPanel.getBtnCalculate().addListener(SWT.Selection, new ListenerForButtonCalculate(mathData));
+		
+		mathOperationPanel.getBtnCalculate().addSelectionListener(new ListenerForButtonCalculate(calculation));
+		
 	}
 	
 }

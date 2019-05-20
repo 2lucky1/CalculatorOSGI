@@ -12,7 +12,6 @@ public class Calculations implements Observer {
 	private double result;
 	private boolean isflyModeOn;
 
-	private MathData mathData;
 	private AbstractCalculator calculator;
 
 	public Calculations(AbstractCalculator calculator) {
@@ -21,16 +20,20 @@ public class Calculations implements Observer {
 
 	@Override
 	public void update(Map params) {
-		
 		this.firstNumber = (double) params.get("firstOperand");
 		this.mathOperator = (String) params.get("sign");
 		this.secondNumber = (double) params.get("secondOperand");
+		this.isflyModeOn = (boolean) params.get("onFlyMode");
 		
-		if(isOperatorExist(mathOperator)) {
-			this.result = calculator.makeCalculation(firstNumber, secondNumber, mathOperator);
-			setResultIntoResultField(result);
-			setResultIntoHistory(result);
+		if(isflyModeOn && isOperatorExist(mathOperator)) {
+			calculate();
 		}
+	}
+	
+	public void calculate() {
+		this.result = calculator.makeCalculation(firstNumber, secondNumber, mathOperator);
+		setResultIntoResultField(result);
+		setResultIntoHistory(result);
 	}
 	
 	private void setResultIntoResultField(double result) {

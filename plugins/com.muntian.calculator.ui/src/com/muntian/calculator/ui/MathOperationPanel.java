@@ -67,7 +67,7 @@ public class MathOperationPanel extends Composite {
 
 		firstNumber = new Text(this, SWT.BORDER);
 
-		mathOperator = new Combo(this, SWT.DROP_DOWN);
+		mathOperator = new Combo(this, SWT.DROP_DOWN|SWT.READ_ONLY);
 		mathOperator.setItems(items);
 		GridData gridData = new GridData(GridData.CENTER, GridData.FILL, false, false);
 		gridData.widthHint = 50;
@@ -87,6 +87,7 @@ public class MathOperationPanel extends Composite {
 		labelCalcOnTheFly.setLayoutData(gridData);
 
 		btnCalculate = new Button(this, SWT.PUSH);
+		btnCalculate.setEnabled(false);
 		btnCalculate.setText(CALCULATE);
 		gridData = new GridData(GridData.FILL, GridData.FILL, true, true);
 		gridData.horizontalIndent = 10;

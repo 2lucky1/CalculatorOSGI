@@ -1,32 +1,25 @@
 package com.muntian.calculator.listeners;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 
-import com.muntian.calculator.logic.MathData;
-import com.muntian.calculator.ui.MainPanel;
-import com.muntian.calculator.ui.MathOperationPanel;
+import com.muntian.calculator.logic.Calculations;
 
-public class ListenerForButtonCalculate implements Listener {
-	
-	private MathOperationPanel mathOperationPanel = MainPanel.getInstance().getMathOperationPanel();
-	private MathData mathData;
-	
-	public ListenerForButtonCalculate(MathData mathData) {
-		this.mathData = mathData;
+public class ListenerForButtonCalculate implements SelectionListener {
+
+	private Calculations calculation;
+
+	public ListenerForButtonCalculate(Calculations calculation) {
+		this.calculation = calculation;
 	}
-	
+
 	@Override
-	public void handleEvent(Event event) {
-		switch (event.type) {
-		case SWT.Selection:
+	public void widgetSelected(SelectionEvent e) {
+		calculation.calculate();
+	}
 
-			mathData.setFirstOperand(Double.parseDouble(mathOperationPanel.getFirstNumber().getText()));
-			mathData.setSecondOperand(Double.parseDouble(mathOperationPanel.getSecondNumber().getText()));
-			mathData.setSign(mathOperationPanel.getMathOperator().getText());
-
-			break;
-		}
+	@Override
+	public void widgetDefaultSelected(SelectionEvent e) {
+		System.out.println("Ignore this method");
 	}
 }

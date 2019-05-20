@@ -9,25 +9,25 @@ import com.muntian.calculator.ui.MainPanel;
 import com.muntian.calculator.ui.MathOperationPanel;
 
 public class ModifyListenerForFirstOperand implements ModifyListener {
-	
+
 	private MathOperationPanel mathOperationPanel = MainPanel.getInstance().getMathOperationPanel();
 	private MathData mathData;
-	
+
 	public ModifyListenerForFirstOperand(MathData mathData) {
 		this.mathData = mathData;
 	}
-	
+
 	@Override
 	public void modifyText(ModifyEvent e) {
 		Text widget = (Text) e.widget;
 		String operand = widget.getText();
-		if (mathOperationPanel.getCheckBoxOnFlyMode().getSelection()) {
-			System.out.println("Modify listener!!");
-			if(operand.equals("")) {
-				mathData.setFirstOperand(0);
-			}else {
-				mathData.setFirstOperand(Double.parseDouble(operand));
-			}
+
+		System.out.println("Modify listener!!");
+		if (operand.equals("")) {
+			mathData.setFirstOperand(0);
+		} else {
+			mathData.setFirstOperand(Double.parseDouble(operand));
 		}
+
 	}
 }
